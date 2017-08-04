@@ -10,6 +10,9 @@ JNIEXPORT jobject JNICALL Java_demo_createdemo
   (JNIEnv * env, jclass clazz){
 
   	jmethodID mid;
+
+  	jmethodID mid2;
+
   	jobject obj;
 
   	jfieldID jid1;
@@ -22,6 +25,7 @@ JNIEXPORT jobject JNICALL Java_demo_createdemo
   	jclass clz=(*env)->FindClass(env,"demo");
 
   	mid=(*env)->GetMethodID(env,clz,"<init>","()V");
+  	mid2=(*env)->GetMethodID(env,clz,"jnishow","()V");
 
   	obj=(*env)->NewObject(env,clz,mid);
   	
@@ -35,6 +39,7 @@ JNIEXPORT jobject JNICALL Java_demo_createdemo
   	js=(*env)->NewStringUTF(env,"hello jni string");
   	(*env)->SetObjectField(env,obj,jid2,js);
 
+  	(*env)->CallVoidMethod(env,obj,mid2);
 
   	return obj;
 

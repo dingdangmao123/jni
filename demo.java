@@ -30,6 +30,10 @@ public class demo{
 
 	}
 
+	public void jnishow(){
+		System.out.println("jnishow");
+	}
+
 	public static void main(String[] argv){
 
 
