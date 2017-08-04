@@ -23,6 +23,22 @@ JNIEXPORT jobject JNICALL Java_demo_createdemo
 JNIEXPORT void JNICALL Java_demo_show
   (JNIEnv *, jobject);
 
+/*
+ * Class:     demo
+ * Method:    get
+ * Signature: ()[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_demo_get
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     demo
+ * Method:    Array
+ * Signature: ([Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_demo_Array
+  (JNIEnv *, jobject, jobjectArray);
+
 #ifdef __cplusplus
 }
 #endif

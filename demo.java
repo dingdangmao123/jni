@@ -12,12 +12,16 @@ public class demo{
 
 	public demo(){
 	
-		System.out.println("hello world");
+		System.out.println("hello demo!");
 	}
 	
 	public static native demo createdemo();
 
 	public native void show();
+
+	public native String[] get();
+
+	public native void Array(String[] arg);
 
 	public void javashow(String[] argv){
 
@@ -32,8 +36,12 @@ public class demo{
 		demo ins=createdemo();
 		ins.show();
 		System.out.println(ins.num);
-		
 		System.out.println(ins.str);
+
+
+		ins.Array(new String[]{"java","c++","python"});
+
+		ins.javashow(ins.get());
 
 	}
 }

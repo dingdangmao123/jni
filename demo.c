@@ -70,4 +70,74 @@ JNIEXPORT void JNICALL Java_demo_show
   	printf("jni_show num:%d str:%s\n",ji,str);
   	(*env)->ReleaseStringUTFChars(env,js,str);
 
+  	printf("----------------\n");
+
+  }
+
+
+/*
+ * Class:     demo
+ * Method:    get
+ * Signature: ()[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_demo_get
+  (JNIEnv * env, jobject obj){
+
+/*
+   jstring (JNICALL *NewStringUTF)
+      (JNIEnv *env, const char *utf);
+
+    jobjectArray (JNICALL *NewObjectArray)
+      (JNIEnv *env, jsize len, jclass clazz, jobject init);
+    jobject (JNICALL *GetObjectArrayElement)
+      (JNIEnv *env, jobjectArray array, jsize index);
+    void (JNICALL *SetObjectArrayElement)
+      (JNIEnv *env, jobjectArray array, jsize index, jobject val);
+
+    jclass (JNICALL *GetObjectClass)
+      (JNIEnv *env, jobject obj);
+
+*/
+  	jsize len=3;
+  	jsize i=0;
+  	char *p[3]={"Android","iOS","WP"};
+  	jstring js=(*env)->NewStringUTF(env,"init");
+
+  	jclass clz=(*env)->GetObjectClass(env,js);
+  	
+
+	jobjectArray ja=(*env)->NewObjectArray(env,3,clz,js);
+
+
+	for(i=0;i<len;i++){
+		(*env)->SetObjectArrayElement(env,ja,i,(*env)->NewStringUTF(env,p[i]));
+	}
+	
+
+	return ja;
+  }
+
+
+/*
+ * Class:     demo
+ * Method:    Array
+ * Signature: ([Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_demo_Array
+  (JNIEnv * env, jobject obj, jobjectArray ja){
+  	jstring js;
+  	const char* str=NULL;
+  	jsize len=(*env)->GetArrayLength(env,ja);
+  	jint i=0;
+  	for(i=0;i<len;i++){
+
+  		js=(*env)->GetObjectArrayElement(env,ja,i);
+  		str=(*env)->GetStringUTFChars(env,js,0);
+ 		printf("jni %s\n",str);
+  		(*env)->ReleaseStringUTFChars(env,js,str);
+
+  	}
+
+  	printf("----------------\n");
+
   }
