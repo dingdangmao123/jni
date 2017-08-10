@@ -2,6 +2,7 @@
 #include <jni.h>
 /* Header for class MyThread */
 
+
 #ifndef _Included_MyThread
 #define _Included_MyThread
 #ifdef __cplusplus

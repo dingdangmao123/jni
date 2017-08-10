@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_MyThread_start
   	}
 	for(i=0;i<num;i++){
 		data[i]=every;
-   // printf("%d\n",data[i]);
+  
 		pthread_create(handles+i,NULL,Worker,data+i);
 	}
 
@@ -77,10 +77,10 @@ JNIEXPORT void JNICALL Java_MyThread_free
  		jint id=(jint*)arg-data;
 
  		jint num=data[id];
-   // printf("%d\n",num);
+
 
  		jint i=0;
-   // num=2;
+
  		for(i=0;i<num;i++){
 
  			printf("id->%d %d\n",id+1,i);

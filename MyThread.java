@@ -9,7 +9,6 @@ public class MyThread{
 
 	public static native void free();
 
-
 	public static void main(String[] argv){
 
 		init();
